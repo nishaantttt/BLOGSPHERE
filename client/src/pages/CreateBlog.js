@@ -21,7 +21,7 @@ function CreateBlog() {
 
       const token = localStorage.getItem("token");
 
-      const res = await fetch("http://localhost:8000/api/blogs", {
+      const res = await fetch("https://blogsphere-i7z4.onrender.com/api/blogs", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -9,7 +9,7 @@ function AdminDashboard() {
   const authHeader = { Authorization: `Bearer ${token}` };
 
   const fetchUsers = async () => {
-    const res = await fetch("http://localhost:8000/api/admin/users", {
+    const res = await fetch("https://blogsphere-i7z4.onrender.com/api/admin/users", {
       headers: authHeader,
     });
     const data = await res.json();
@@ -17,7 +17,7 @@ function AdminDashboard() {
   };
 
   const fetchBlogs = async () => {
-    const res = await fetch("http://localhost:8000/api/admin/blogs", {
+    const res = await fetch("https://blogsphere-i7z4.onrender.com/api/admin/blogs", {
       headers: authHeader,
     });
     const data = await res.json();
@@ -31,7 +31,7 @@ function AdminDashboard() {
 
   const handleDeleteUser = async (id) => {
     if (!window.confirm("Delete this user?")) return;
-    await fetch(`http://localhost:8000/api/admin/users/${id}`, {
+    await fetch(`https://blogsphere-i7z4.onrender.com/api/admin/users/${id}`, {
       method: "DELETE",
       headers: authHeader,
     });
@@ -40,7 +40,7 @@ function AdminDashboard() {
 
   const handleDeleteBlog = async (id) => {
     if (!window.confirm("Remove this blog?")) return;
-    await fetch(`http://localhost:8000/api/admin/blogs/${id}`, {
+    await fetch(`https://blogsphere-i7z4.onrender.com/api/admin/blogs/${id}`, {
       method: "DELETE",
       headers: authHeader,
     });
