@@ -8,22 +8,20 @@ connectDB();
 
 const app = express();
 
-// ✅ CORS (FIRST, before everything)
+// ✅ CORS
 const corsOptions = {
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: "https://blogsphere-client-g83p.onrender.com",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
+  credentials: true,
 };
 
-app.use(cors(corsOptions));
-
-// ✅ VERY IMPORTANT (handles preflight requests)
 app.use(cors(corsOptions));
 
 // ✅ Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use((req, res, next) => {
   console.log("METHOD:", req.method);
   console.log("URL:", req.url);
@@ -32,11 +30,11 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // ✅ Routes
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/blogs", require("./routes/blogRoutes"));
 app.use("/api/admin", require("./routes/adminRoutes"));
+
 // ✅ Test route
 app.get("/", (req, res) => {
   res.send("API Running...");
