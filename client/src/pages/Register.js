@@ -11,7 +11,7 @@ function Register() {
   const handleRegister = async () => {
     try {
       const res = await axios.post(
-        "https://blogsphere-i7z4.onrender.com/api/auth/register",
+        "https://blogsphere-frontend-fzq9.onrender.com/api/auth/register",
         {
           name,
           email,

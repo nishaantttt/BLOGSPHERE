@@ -27,7 +27,7 @@ function Home() {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch("https://blogsphere-i7z4.onrender.com/api/blogs");
+      const res = await fetch("https://blogsphere-api-new.onrender.com/api/blogs");
       const data = await res.json();
       setBlogs(data);
     } catch (error) {
@@ -103,7 +103,7 @@ function Home() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`https://blogsphere-i7z4.onrender.com/api/blogs/${blogId}`, {
+      const res = await fetch(`https://blogsphere-frontend-fzq9.onrender.com/api/blogs/${blogId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -231,7 +231,7 @@ function Home() {
                         try {
                           triggerLikeAnimation(blog._id);
                           const token = localStorage.getItem("token");
-                          await fetch(`https://blogsphere-i7z4.onrender.com/api/blogs/like/${blog._id}`, {
+                          await fetch(`https://blogsphere-frontend-fzq9.onrender.com/api/blogs/like/${blog._id}`, {
                             method: "PUT",
                             headers: { Authorization: `Bearer ${token}` },
                           });
@@ -318,7 +318,7 @@ function Home() {
                     try {
                       triggerLikeAnimation(blog._id);
                       const token = localStorage.getItem("token");
-                      await fetch(`https://blogsphere-i7z4.onrender.com/api/blogs/like/${blog._id}`, {
+                      await fetch(`https://blogsphere-frontend-fzq9.onrender.com/api/blogs/like/${blog._id}`, {
                         method: "PUT",
                         headers: { Authorization: `Bearer ${token}` },
                       });
@@ -350,7 +350,7 @@ function Home() {
                   if (e.key === "Enter" && e.target.value.trim()) {
                     try {
                       const token = localStorage.getItem("token");
-                      await fetch(`https://blogsphere-i7z4.onrender.com/api/blogs/comment/${blog._id}`, {
+                      await fetch(`https://blogsphere-frontend-fzq9.onrender.com/api/blogs/comment/${blog._id}`, {
                         method: "POST",
                         headers: {
                           "Content-Type": "application/json",
