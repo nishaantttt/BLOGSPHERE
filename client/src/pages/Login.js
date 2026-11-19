@@ -8,7 +8,7 @@ function Login() {
 
   const handleLogin = async () => {
   try {
-    const res = await fetch("https://blogsphere-frontend-fzq9.onrender.com/api/auth/login", {
+    const res = await fetch("https://blogsphere-api-new.onrender.com/api/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
