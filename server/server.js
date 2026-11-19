@@ -10,11 +10,16 @@ const app = express();
 
 // ✅ CORS
 const corsOptions = {
-  origin: "https://blogsphere-client-g83p.onrender.com",
+  origin: [
+    "http://localhost:3000",
+    "https://YOUR-NEW-FRONTEND.onrender.com"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
+
+app.use(cors(corsOptions));
 
 app.use(cors(corsOptions));
 
