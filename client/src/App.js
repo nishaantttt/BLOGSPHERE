@@ -8,6 +8,7 @@ import Profile from "./pages/Profile";
 import Landing from "./pages/Landing";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedAdminRoute from "./components/ProtectedAdminRoute";
+import BlogDetails from "./pages/BlogDetails";
 
 function App() {
   return (
@@ -16,9 +17,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/blogs/:id" element={<BlogDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/create" element={<CreateBlog />} />
+        <Route path="/create" element={<CreateBlog />} />        
         <Route path="/profile" element={<Profile />} />
         <Route
           path="/admin"

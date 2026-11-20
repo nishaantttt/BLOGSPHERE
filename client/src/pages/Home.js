@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
   const [blogs, setBlogs] = useState([]);
   const [search, setSearch] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
@@ -313,10 +315,10 @@ await fetchBlogs();
               </p>
               {blog.content?.length > 180 && (
                 <button
-                  onClick={() => toggleReadMore(blog._id)}
+                  onClick={() => navigate(`/blogs/${blog._id}`)}
                   className="mt-2 w-fit text-xs font-semibold text-orange-500 transition hover:text-orange-600"
                 >
-                  {expandedBlogs[blog._id] ? "Read less" : "Read more"}
+                  Read more →
                 </button>
               )}
               <p className="mt-2 text-xs text-slate-400">By {blog.author?.name || "User"}</p>
