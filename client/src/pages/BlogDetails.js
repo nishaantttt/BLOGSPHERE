@@ -45,13 +45,60 @@ function BlogDetails() {
     fetchBlog();
   }, [id]);
 
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center text-slate-600">
-        Loading blog...
+  
+if (loading) {
+  return (
+    <div className="min-h-screen bg-orange-50/40 px-4 py-10 sm:px-6">
+      <div className="mx-auto max-w-4xl overflow-hidden rounded-2xl bg-white shadow-sm animate-pulse">
+
+        {/* IMAGE SKELETON */}
+        <div className="h-64 w-full bg-gradient-to-r from-orange-100 via-orange-50 to-orange-100 sm:h-96" />
+
+        <div className="space-y-6 px-5 py-8 sm:px-10">
+
+          {/* BACK BUTTON */}
+          <div className="h-4 w-28 rounded-full bg-orange-100" />
+
+          {/* CATEGORY */}
+          <div className="h-7 w-24 rounded-full bg-orange-100" />
+
+          {/* TITLE */}
+          <div className="space-y-3">
+            <div className="h-9 w-full rounded-lg bg-slate-100" />
+            <div className="h-9 w-3/4 rounded-lg bg-slate-100" />
+          </div>
+
+          {/* AUTHOR */}
+          <div className="h-4 w-48 rounded-full bg-slate-100" />
+
+          <div className="border-t border-slate-100" />
+
+          {/* BLOG CONTENT */}
+          <div className="space-y-4">
+            {Array.from({ length: 8 }).map((_, index) => (
+              <div
+                key={index}
+                className={`h-4 rounded-full bg-slate-100 ${
+                  index % 3 === 0 ? "w-full" :
+                  index % 3 === 1 ? "w-5/6" : "w-4/6"
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* COMMENTS */}
+          <div className="space-y-3 pt-6">
+            <div className="h-6 w-36 rounded-lg bg-orange-100" />
+            <div className="h-16 rounded-xl bg-orange-50" />
+            <div className="h-16 rounded-xl bg-orange-50" />
+          </div>
+
+        </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
+
 
   if (error || !blog) {
     return (
