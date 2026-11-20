@@ -54,15 +54,19 @@ exports.likeBlog = async (req, res) => {
   try {
     const blog = await Blog.findById(req.params.id);
 
-    if (!blog) return res.status(404).json({ msg: "Blog not found" });
+    if (!blog) {
+      return res.status(404).json({ msg: "Blog not found" });
+    }
 
     const userId = req.user.id;
 
-    const alreadyLiked = blog.likes.includes(userId);
+    const alreadyLiked = blog.likes.some(
+      (id) => id.toString() === userId.toString()
+    );
 
     if (alreadyLiked) {
       blog.likes = blog.likes.filter(
-        (id) => id.toString() !== userId
+        (id) => id.toString() !== userId.toString()
       );
     } else {
       blog.likes.push(userId);
@@ -70,15 +74,18 @@ exports.likeBlog = async (req, res) => {
 
     await blog.save();
 
-    res.json({
+    res.status(200).json({
       msg: alreadyLiked ? "Unliked" : "Liked",
       totalLikes: blog.likes.length,
+      isLiked: !alreadyLiked,
+      blogId: blog._id
     });
+
   } catch (error) {
+    console.error("LIKE ERROR:", error);
     res.status(500).json({ error: error.message });
   }
 };
-
 
 // 💬 ADD COMMENT
 exports.addComment = async (req, res) => {
